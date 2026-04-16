@@ -177,37 +177,25 @@ export function Navbar() {
         >
           {/* === Background layers === */}
           <div className="absolute inset-0 overflow-hidden" style={{ width: '100vw', height: '100svh' }}>
-            {/* White/cream back layer */}
-            <motion.div
-              aria-hidden
-              className="absolute z-0"
-              style={{
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100svh',
-                backgroundColor: 'var(--color-brand-white)',
-              }}
-              initial={{ y: '-100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '-100%' }}
-              transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-            />
-            {/* Pink front layer */}
+            {/* Pink background layer with correct animation */}
             <motion.div
               aria-hidden
               className="absolute z-[1]"
               style={{
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100svh',
+                top: '0.75em',
+                left: '0.5em',
+                right: '0.5em',
+                bottom: '0.75em',
                 backgroundColor: 'var(--color-brand-pink)',
+                borderRadius: '1.5em',
               }}
-              initial={{ y: '-100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '-100%' }}
-              transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ y: '-100%', rotateZ: 20 }}
+              animate={{ y: ['-100%', '14%', '0%'], rotateZ: 0 }}
+              exit={{ y: '-100%', rotateZ: 20 }}
+              transition={{ 
+                duration: 0.6, 
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
             />
           </div>
 
@@ -244,12 +232,12 @@ export function Navbar() {
                   <motion.div
                     key={link.title}
                     initial={{ opacity: 0, y: '-5em', scale: 0 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    animate={{ opacity: 1, y: 0, scale: [1, 1.1, 1] }}
                     exit={{ opacity: 0, y: '-2em', scale: 0.96 }}
                     transition={{
                       delay: 0.15 + i * 0.06,
                       duration: 0.55,
-                      ease: [0.22, 1, 0.36, 1],
+                      ease: [0.25, 0.46, 0.45, 0.94],
                     }}
                     style={{ transformOrigin: '50% 50%' }}
                     className="flex w-full justify-center"
