@@ -43,6 +43,7 @@ next-env.d.ts
 # temp analysis files
 hyped.html
 hyped.css
+gethyped_home.html
 vars.txt
 all_styles.txt
 btn_styles.txt
@@ -54,3 +55,4 @@ nav_menu.txt
 nav_menu_html.txt
 nav_styles.txt
 navbar_menu.txt
+design-specification.md

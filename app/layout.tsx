@@ -4,7 +4,11 @@ import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   title: 'Get Hyped - Social-first content agency',
@@ -17,10 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.className} scroll-smooth antialiased h-full`}>
-      <body className="min-h-full flex flex-col bg-brand-primary text-brand-black">
+    <html lang="en" className={inter.variable}>
+      <body>
         <Navbar />
-        <main className="flex-1 flex flex-col">
+        <main>
           {children}
         </main>
         <Footer />

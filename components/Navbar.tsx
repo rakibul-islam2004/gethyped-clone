@@ -92,7 +92,7 @@ export function Navbar() {
       ${isHidden && !isMobileMenuOpen ? '-translate-y-full' : 'translate-y-0'}
       `}
     >
-      <div className="flex justify-between items-center w-full max-w-[96em] h-[5.6em] lg:h-[6em] mx-auto px-[1em] md:px-[1.2em] lg:px-[1.6em]">
+      <div className="flex justify-between items-center w-full max-w-[120em] h-[5.6em] lg:h-[7.5em] mx-auto px-[1.25em] md:px-[1.5em] lg:px-[2.5em]">
 
         {/* Logo — hidden on mobile when menu is open (rendered inside overlay instead) */}
         <Link
@@ -200,7 +200,7 @@ export function Navbar() {
           </div>
 
           {/* === Top bar (logo + close button) on top of pink bg === */}
-          <div className="absolute top-0 left-0 right-0 z-[3] flex justify-between items-center w-full max-w-[96em] h-[5.6em] mx-auto px-[1em] md:px-[1.2em] lg:px-[1.6em]">
+          <div className="absolute top-0 left-0 right-0 z-[3] flex justify-between items-center w-full max-w-[120em] h-[5.6em] mx-auto px-[1.25em] md:px-[1.5em] lg:px-[2.5em]">
             <Link
               href="/"
               aria-label="Home link"
