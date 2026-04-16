@@ -40,7 +40,6 @@ html {
   line-height: 1em;
   text-decoration: none;
   display: grid;
-  transform-style: preserve-3d;
 
   --elastic-ease-out: linear(0, 0.5737 7.6%, 0.8382 11.87%, 0.9463 14.19%, 1.0292 16.54%,
       1.0886 18.97%, 1.1258 21.53%, 1.137 22.97%, 1.1424 24.48%,
@@ -76,7 +75,8 @@ html {
   background-color: var(--color-brand-black);
   translate: -10% 120% 0;
   rotate: 0 0 1 -12deg;
-  transition: translate .6s var(--smooth-ease), rotate .5s var(--smooth-ease);
+  opacity: 0;
+  transition: translate .6s var(--smooth-ease), rotate .5s var(--smooth-ease), opacity .2s ease-out;
   transition-delay: calc((var(--index) * -1) * .042s);
 }
 
