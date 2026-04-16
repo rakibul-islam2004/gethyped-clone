@@ -98,7 +98,7 @@ export function Navbar() {
         <Link
           href="/"
           aria-label="Home link"
-          className={`relative z-[1001] h-[3em] lg:h-[3.8em] inline-block transition-opacity duration-200 ${
+          className={`relative z-[1001] h-[3em] lg:h-[4.75em] inline-block transition-opacity duration-200 ${
             isMobileMenuOpen ? 'lg:block hidden' : 'block'
           }`}
         >
@@ -107,9 +107,9 @@ export function Navbar() {
 
         {/* Desktop menu pill */}
         <div
-          className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-brand-white rounded-[0.8em] h-[2.8em] p-[0.4em] gap-[0.4em] z-[998] overflow-hidden"
+          className="hidden lg:flex absolute left-1/2 -translate-x-1/2 bg-brand-white rounded-[0.8em] h-[3.25em] p-[0.4em] gap-[0.5em] z-[998] overflow-hidden"
         >
-          <div className="flex flex-row gap-[0.4em] h-full z-10 relative">
+          <div className="flex flex-row gap-[0.5em] h-full z-10 relative">
             {navLinks.map((link) => (
               <Link
                 key={link.title}

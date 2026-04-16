@@ -590,8 +590,8 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   color: var(--_colors---swatch--black);
   letter-spacing: -.02em;
   user-select: none;
-  font-size: .9em;
-  font-weight: 500;
+  font-size: 1.125em;
+  font-weight: 600;
   line-height: 1em;
   text-decoration: none;
   display: grid;
@@ -633,7 +633,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 .button-color-swoosh_inner {
   z-index: 1;
   grid-area: 1/1;
-  padding: .5em .6em;
+  padding: .625em .65em;
   display: grid;
   position: relative;
   overflow: clip;
@@ -677,7 +677,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   user-select: none;
   place-content: center;
   align-items: center;
-  font-size: 1.125em;
+  font-size: 1.25em;
   font-weight: 600;
   line-height: 1;
   display: flex;
@@ -697,8 +697,8 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 .button-default__inner {
   justify-content: center;
   align-items: center;
-  height: 2.75em;
-  padding: 1rem 0 1rem 1em;
+  height: 3.25em;
+  padding: 1rem 0.25rem 1rem 1.25em;
   display: flex;
   position: relative;
   transition: transform var(--speed) var(--bounce-ease);
