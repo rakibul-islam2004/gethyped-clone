@@ -355,8 +355,9 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   padding-top: 12em;
   padding-bottom: 4em;
 }
-@media screen and (max-width: 991px) { .hero { padding-top: 10em; padding-bottom: 2em; } }
-@media screen and (max-width: 767px) { .hero { padding-top: 8em; } }
+@media screen and (max-width: 991px) { .hero { padding-top: 10em; padding-bottom: 3em; } }
+@media screen and (max-width: 767px) { .hero { padding-top: 8em; padding-bottom: 2em; } }
+@media screen and (max-width: 478px) { .hero { padding-top: 6em; padding-bottom: 1.5em; } }
 
 .hero-title {
   display: flex;
@@ -366,6 +367,21 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 }
 @media screen and (max-width: 991px) { .hero-title { max-width: 100%; margin-bottom: 1em; } }
 @media screen and (max-width: 767px) { .hero-title { gap: 1.5em; } }
+@media screen and (max-width: 478px) { .hero-title { gap: 1em; } }
+
+/* Responsive hero fonts */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hero-title .heading-xxl { font-size: 4.8em; }
+  .hero-title .paragraph-l { font-size: 1.4em; }
+}
+@media screen and (min-width: 480px) and (max-width: 991px) {
+  .hero-title .heading-xxl { font-size: 4.2em; }
+  .hero-title .paragraph-l { font-size: 1.3em; }
+}
+@media screen and (max-width: 479px) {
+  .hero-title .heading-xxl { font-size: 3.5em; }
+  .hero-title .paragraph-l { font-size: 1.2em; }
+}
 
 /* Cards outer wrapper */
 .mwg_effect025 {
@@ -385,8 +401,33 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   padding: 4em;
   overflow: visible;
 }
+@media screen and (max-width: 1200px) {
+  .container.is-mwg_effect025 { 
+    padding: 3em 1em 0;
+    justify-content: center;
+    gap: 0.5em;
+  }
+}
 @media screen and (max-width: 991px) {
-  .container.is-mwg_effect025 { padding: 2em 0 0; }
+  .container.is-mwg_effect025 { 
+    padding: 2em 0.5em 0;
+    justify-content: center;
+    gap: 0.3em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .container.is-mwg_effect025 { 
+    padding: 1.5em 0.3em 0;
+    gap: 0.2em;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container.is-mwg_effect025 { 
+    padding: 1em 0 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4em;
+  }
 }
 
 /* Individual card */
@@ -401,20 +442,65 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  box-shadow: 0 0.8em 2.5em rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
-@media screen and (max-width: 991px) { .results-card { border-radius: 2em; } }
-@media screen and (max-width: 767px) { .results-card { border-radius: 1.5em; } }
-@media screen and (max-width: 478px) { .results-card { border-radius: 1.25em; width: 100%; } }
+@media screen and (max-width: 991px) { 
+  .results-card { 
+    border-radius: 2em; 
+    width: 20em;
+  }
+}
+@media screen and (max-width: 767px) { 
+  .results-card { 
+    border-radius: 1.5em;
+    width: 16em;
+  }
+}
+@media screen and (max-width: 478px) { 
+  .results-card { 
+    border-radius: 1.25em; 
+    width: 85%;
+    aspect-ratio: 4.8 / 6.2;
+  }
+}
 
 /* Fan/overlap stacking */
-@media screen and (min-width: 992px) {
-  .mwg_effect025 .results-card + .results-card { margin-left: -10vw; }
+@media screen and (min-width: 1200px) {
+  .mwg_effect025 .results-card + .results-card { margin-left: -8vw; }
 }
-@media screen and (min-width: 479px) and (max-width: 991px) {
-  .mwg_effect025 .results-card + .results-card { margin-left: -5vw; }
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .mwg_effect025 .results-card + .results-card { margin-left: -6vw; }
 }
-@media screen and (max-width: 478px) {
-  .mwg_effect025 .results-card + .results-card { margin-left: -2.5vw; z-index: -1; }
+@media screen and (min-width: 480px) and (max-width: 991px) {
+  .mwg_effect025 .results-card + .results-card { margin-left: -4vw; }
+}
+@media screen and (max-width: 479px) {
+  .mwg_effect025 .results-card + .results-card { 
+    margin-left: 0; 
+    margin-top: -0.2em;
+  }
+}
+
+/* Card rotation to match original */
+.mwg_effect025 .results-card:nth-child(1) { transform: rotate(-8deg) translateY(0.6em); }
+.mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(-0.3em); }
+.mwg_effect025 .results-card:nth-child(3) { transform: rotate(8deg) translateY(0.6em); }
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-6deg) translateY(0.4em); }
+  .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(-0.2em); }
+  .mwg_effect025 .results-card:nth-child(3) { transform: rotate(6deg) translateY(0.4em); }
+}
+@media screen and (min-width: 480px) and (max-width: 991px) {
+  .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-4deg) translateY(0.3em); }
+  .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(-0.1em); }
+  .mwg_effect025 .results-card:nth-child(3) { transform: rotate(4deg) translateY(0.3em); }
+}
+@media screen and (max-width: 479px) {
+  .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-2deg) translateY(0.1em); }
+  .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(0em); }
+  .mwg_effect025 .results-card:nth-child(3) { transform: rotate(2deg) translateY(0.1em); }
 }
 
 .results-card_content {
@@ -434,6 +520,29 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   font-weight: 600;
   line-height: .9;
   letter-spacing: -.05em;
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .results-card_title { font-size: 5.2em; }
+}
+@media screen and (min-width: 480px) and (max-width: 991px) {
+  .results-card_title { font-size: 4.8em; }
+}
+@media screen and (max-width: 479px) {
+  .results-card_title { font-size: 4.2em; }
+}
+
+/* Responsive card text fonts */
+@media screen and (max-width: 991px) {
+  .results-card_subtitle { font-size: 1em; }
+  .results-card_paragraph { font-size: 0.95em; }
+}
+@media screen and (max-width: 767px) {
+  .results-card_subtitle { font-size: 0.95em; }
+  .results-card_paragraph { font-size: 0.9em; }
+}
+@media screen and (max-width: 478px) {
+  .results-card_subtitle { font-size: 0.9em; }
+  .results-card_paragraph { font-size: 0.85em; }
 }
 .results-card_body {
   display: flex;

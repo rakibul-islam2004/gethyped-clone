@@ -139,8 +139,8 @@ export function Hero() {
                     />
                   </div>
 
-                  {/* Card 3 — Green stat (hidden mobile) */}
-                  <div className="results-card theme-green hide-mobile" ref={ref(2)}>
+                  {/* Card 3 — Green stat */}
+                  <div className="results-card theme-green" ref={ref(2)}>
                     <div className="results-card_content">
                       <div className="results-card_title">30+</div>
                       <div className="results-card_body">
