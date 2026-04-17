@@ -392,42 +392,16 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   overflow: visible;
 }
 
-/* Cards inner container — padding gives breathing room */
+/* Cards inner container — exact from original Webflow CSS */
 .container.is-mwg_effect025 {
-  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   width: 100%;
   padding: 4em;
-  overflow: visible;
+  display: flex;
 }
-@media screen and (max-width: 1200px) {
-  .container.is-mwg_effect025 { 
-    padding: 3em 1em 0;
-    justify-content: center;
-    gap: 0.5em;
-  }
-}
+
 @media screen and (max-width: 991px) {
-  .container.is-mwg_effect025 { 
-    padding: 2em 0.5em 0;
-    justify-content: center;
-    gap: 0.3em;
-  }
-}
-@media screen and (max-width: 768px) {
-  .container.is-mwg_effect025 { 
-    padding: 1.5em 0.3em 0;
-    gap: 0.2em;
-  }
-}
-@media screen and (max-width: 480px) {
-  .container.is-mwg_effect025 { 
-    padding: 1em 0 0;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4em;
-  }
+  .container.is-mwg_effect025 { padding: 2em 0 0; }
 }
 
 /* Individual card */
@@ -465,43 +439,22 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   }
 }
 
-/* Fan/overlap stacking */
-@media screen and (min-width: 1200px) {
-  .mwg_effect025 .results-card + .results-card { margin-left: -8vw; }
+/* Fan/overlap — exact from original Webflow inline CSS script */
+@media screen and (min-width: 992px) {
+  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -10vw; }
 }
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-  .mwg_effect025 .results-card + .results-card { margin-left: -6vw; }
+@media screen and (min-width: 479px) and (max-width: 991px) {
+  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -5vw; }
 }
-@media screen and (min-width: 480px) and (max-width: 991px) {
-  .mwg_effect025 .results-card + .results-card { margin-left: -4vw; }
-}
-@media screen and (max-width: 479px) {
-  .mwg_effect025 .results-card + .results-card { 
-    margin-left: 0; 
-    margin-top: -0.2em;
-  }
+@media screen and (max-width: 478px) {
+  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -2.5vw; z-index: -1; }
 }
 
-/* Card rotation to match original */
+/* Card rotations — exact from original */
 .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-8deg) translateY(0.6em); }
 .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(-0.3em); }
 .mwg_effect025 .results-card:nth-child(3) { transform: rotate(8deg) translateY(0.6em); }
-
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-  .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-6deg) translateY(0.4em); }
-  .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(-0.2em); }
-  .mwg_effect025 .results-card:nth-child(3) { transform: rotate(6deg) translateY(0.4em); }
-}
-@media screen and (min-width: 480px) and (max-width: 991px) {
-  .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-4deg) translateY(0.3em); }
-  .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(-0.1em); }
-  .mwg_effect025 .results-card:nth-child(3) { transform: rotate(4deg) translateY(0.3em); }
-}
-@media screen and (max-width: 479px) {
-  .mwg_effect025 .results-card:nth-child(1) { transform: rotate(-2deg) translateY(0.1em); }
-  .mwg_effect025 .results-card:nth-child(2) { transform: rotate(0deg) translateY(0em); }
-  .mwg_effect025 .results-card:nth-child(3) { transform: rotate(2deg) translateY(0.1em); }
-}
+.mwg_effect025 .results-card:nth-child(4) { transform: rotate(0deg) translateY(-0.3em); }
 
 .results-card_content {
   display: flex;
@@ -912,3 +865,236 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   .button-wrap { margin-left: 0; }
 }
 
+
+/* ─────────────────────────────────────────────────────
+   EXPERTISES / SERVICES SECTION
+   Styles ported from original Webflow CSS
+   ───────────────────────────────────────────────────── */
+
+/* Section wrapper — overflow hidden matches original */
+.mwg_effect031 {
+  padding-top: var(--_sizes---size--96px);
+  padding-bottom: var(--_sizes---size--96px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  gap: 0;
+}
+
+@media screen and (max-width: 479px) {
+  .mwg_effect031 { padding-bottom: 2em; }
+}
+
+.expertises-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.expertises-item { width: 100%; }
+
+/* Slide = 100vh - 4em, top padding = 4em — exact from original */
+.expertise-slide {
+  height: calc(100vh - 4em);
+  padding-top: 4em;
+}
+
+@media screen and (max-width: 991px) {
+  .expertise-slide { height: 100svh; }
+}
+@media screen and (max-width: 479px) {
+  .expertise-slide { padding-top: 3em; }
+}
+
+/* perspective: 250vw — enables rotationX 3D tilt, exact from original */
+.expertise-wrap {
+  perspective: 250vw;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Card: fills the wrap absolutely ── */
+.expertise-content {
+  background-color: var(--_theme---background);
+  color: var(--_theme---body-text);
+  transform-origin: 50% 10%;
+  transform-style: preserve-3d;
+  border-radius: 2.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4em;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Each card stacks above the previous — z-index set inline in JSX */
+
+@media screen and (max-width: 991px) {
+  .expertise-content { padding: 3em; }
+}
+@media screen and (max-width: 767px) {
+  .expertise-content { padding: 2em; }
+}
+@media screen and (max-width: 479px) {
+  .expertise-content {
+    border-radius: var(--_layout---radius--border-radius-medium);
+    padding: 1.5em;
+    gap: 1.5em;
+  }
+}
+
+/* ── TOP: label + title stacked, number absolute top-right ── */
+.expertise-content_top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.5em;
+  position: relative;
+}
+
+/* Label pill — exact from original */
+.expertise-content_top .label {
+  background-color: var(--_theme---label-bg);
+  border-radius: 0.5em;
+  justify-content: center;
+  align-items: center;
+  height: 3em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  display: flex;
+}
+
+@media screen and (max-width: 991px) {
+  .expertise-content_top .label { height: 2.5em; font-size: 10px; }
+}
+@media screen and (max-width: 479px) {
+  .expertise-content_top .label { font-size: 12px; }
+}
+
+/* Title — uses heading-xxl token (8em desktop) */
+.expertise-content_heading {
+  font-family: var(--_headings---heading-xxl--font);
+  font-size: var(--_headings---heading-xxl--font-size);
+  line-height: var(--_headings---heading-xxl--line-height);
+  font-weight: var(--_headings---heading-xxl--font-weight);
+  letter-spacing: var(--_headings---heading-xxl--letter-spacing);
+  margin: 0;
+}
+
+@media screen and (max-width: 479px) {
+  .expertise-content_heading { font-size: 3.5em; }
+}
+
+/* Number — absolute top-right, accent color, faded */
+.expertise-content_number {
+  color: var(--_theme---accent-2);
+  display: flex;
+  position: absolute;
+  inset: 0% 0% auto auto;
+}
+
+/* ── VIDEO: absolute bottom-right, rotated 2.5deg ── */
+.expertise-content_img {
+  background-color: var(--_theme---card-outline);
+  border-radius: var(--_layout---radius--border-radius-medium);
+  padding: 8px;
+  position: absolute;
+  inset: auto 4em 4em auto;
+  transform: rotate(2.5deg);
+}
+
+@media screen and (max-width: 991px) {
+  .expertise-content_img {
+    padding: 6px;
+    bottom: 3em;
+    right: 3em;
+  }
+}
+@media screen and (max-width: 767px) {
+  .expertise-content_img {
+    padding: 4px;
+    bottom: 1.5em;
+    right: 1.5em;
+  }
+}
+@media screen and (max-width: 479px) {
+  .expertise-content_img {
+    z-index: -1;
+    aspect-ratio: 3/4;
+    transform-origin: 0 0;
+    border-radius: 1.5em;
+    width: 12em;
+    position: static;
+    transform: rotate(-2deg);
+  }
+}
+
+.medium-image {
+  aspect-ratio: 3/4;
+  border-radius: var(--_layout---radius--border-radius-small);
+  width: 24em;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 991px) {
+  .medium-image { width: 18em; }
+}
+@media screen and (max-width: 767px) {
+  .medium-image { width: 16em; }
+}
+@media screen and (max-width: 479px) {
+  .medium-image { width: 100%; height: 100%; }
+}
+
+.medium-image .image { display: none; }
+
+.medium-image .video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  position: absolute;
+  inset: 0;
+}
+
+/* ── BOTTOM: desc + body + button, max-width 35em ── */
+.expertise-content_bottom {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.5em;
+  max-width: 35em;
+  position: relative;
+}
+
+@media screen and (max-width: 991px) {
+  .expertise-content_bottom { gap: 1.25em; }
+}
+@media screen and (max-width: 767px) {
+  .expertise-content_bottom { max-width: 22em; gap: 1.25em; }
+}
+@media screen and (max-width: 479px) {
+  .expertise-content_bottom { flex: none; max-width: 100%; gap: 1em; }
+}
+
+/* Full-card overlay link */
+.expertise-link {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+/* button-default__icon.is-default — uses theme vars so it adapts per card color */
+.button-default__icon.is-default {
+  background-color: var(--_theme---button-icon-bg);
+  color: var(--_theme---button-icon);
+}
