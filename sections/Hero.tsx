@@ -81,23 +81,10 @@ export function Hero() {
 
   return (
     <header className="section_hero">
-      {/*
-        Exact original structure:
-          section_hero
-            padding-global          ← 2.5em left/right
-              container-col-12      ← max-width 120em, margin auto
-                hero                ← padding-top 12em, padding-bottom 4em
-                  hero-title        ← max-width 70%
-                  mwg_effect025     ← full width flex
-                    container-col-12  ← nested, full width
-                      container.is-mwg_effect025  ← padding 4em, flex row
-                        [4 cards with negative margin overlap]
-      */}
+      {/* Headline — inside page padding */}
       <div className="padding-global">
         <div className="container-col-12">
           <div className="hero text-wrap-auto">
-
-            {/* ── Headline ── */}
             <div className="hero-title">
               <h1 className="heading-xxl">
                 Get Hyped. Get Noticed. Get Results.
@@ -108,67 +95,64 @@ export function Hero() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            {/* ── Cards row ── */}
-            <div className="mwg_effect025">
-              <div className="container-col-12">
-                <div className="container is-mwg_effect025" ref={containerRef}>
+      {/* Cards row — full viewport width, outside page padding */}
+      <div className="mwg_effect025">
+        <div className="container is-mwg_effect025" ref={containerRef}>
 
-                  {/* Card 1 — Blue stat */}
-                  <div className="results-card theme-blue" ref={ref(0)}>
-                    <div className="results-card_content">
-                      <div className="results-card_title">10M+</div>
-                      <div className="results-card_body">
-                        <h2 className="results-card_subtitle">Organische views</h2>
-                        <div className="results-card_divider" />
-                        <p className="results-card_paragraph">Groei door slimme content</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 2 — Video */}
-                  <div className="results-card" ref={ref(1)}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/69c40296636e683096701cda_video-thumb-01.avif"
-                      alt="" loading="eager" className="image"
-                    />
-                    <video
-                      muted loop playsInline autoPlay className="video"
-                      src="https://gethyped.b-cdn.net/Salontopper/Loop%20Salontopper.mp4"
-                    />
-                  </div>
-
-                  {/* Card 3 — Green stat */}
-                  <div className="results-card theme-green" ref={ref(2)}>
-                    <div className="results-card_content">
-                      <div className="results-card_title">30+</div>
-                      <div className="results-card_body">
-                        <h2 className="results-card_subtitle">Merken geholpen</h2>
-                        <div className="results-card_divider" />
-                        <p className="results-card_paragraph">Van start-up tot multinational</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 4 — Video (desktop only) */}
-                  <div className="results-card hide-tablet-mobile" ref={ref(3)}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/69c402fa5b2a05b98200d317_video-thumb-02.avif"
-                      alt="" loading="lazy" className="image"
-                    />
-                    <video
-                      muted loop playsInline autoPlay className="video"
-                      src="https://gethyped.b-cdn.net/Petrol%20Head/petrolhead-loop.mp4"
-                    />
-                  </div>
-
-                </div>
+          {/* Card 1 — Blue stat */}
+          <div className="results-card theme-blue" ref={ref(0)}>
+            <div className="results-card_content">
+              <div className="results-card_title">10M+</div>
+              <div className="results-card_body">
+                <h2 className="results-card_subtitle">Organische views</h2>
+                <div className="results-card_divider" />
+                <p className="results-card_paragraph">Groei door slimme content</p>
               </div>
             </div>
-
           </div>
+
+          {/* Card 2 — Video */}
+          <div className="results-card" ref={ref(1)}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/69c40296636e683096701cda_video-thumb-01.avif"
+              alt="" loading="eager" className="image"
+            />
+            <video
+              muted loop playsInline autoPlay className="video"
+              src="https://gethyped.b-cdn.net/Salontopper/Loop%20Salontopper.mp4"
+            />
+          </div>
+
+          {/* Card 3 — Green stat */}
+          <div className="results-card theme-green" ref={ref(2)}>
+            <div className="results-card_content">
+              <div className="results-card_title">30+</div>
+              <div className="results-card_body">
+                <h2 className="results-card_subtitle">Merken geholpen</h2>
+                <div className="results-card_divider" />
+                <p className="results-card_paragraph">Van start-up tot multinational</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4 — Video (desktop only) */}
+          <div className="results-card hide-tablet-mobile" ref={ref(3)}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/69c402fa5b2a05b98200d317_video-thumb-02.avif"
+              alt="" loading="lazy" className="image"
+            />
+            <video
+              muted loop playsInline autoPlay className="video"
+              src="https://gethyped.b-cdn.net/Petrol%20Head/petrolhead-loop.mp4"
+            />
+          </div>
+
         </div>
       </div>
     </header>

@@ -385,7 +385,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   .hero-title .paragraph-l { font-size: 1.2em; }
 }
 
-/* Cards outer wrapper */
+/* Cards outer wrapper — full viewport width, sits outside padding-global */
 .mwg_effect025 {
   display: flex;
   justify-content: center;
@@ -394,26 +394,29 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   overflow: visible;
 }
 
-/* Cards inner container — exact from original Webflow CSS */
+/* Cards inner container */
 .container.is-mwg_effect025 {
   justify-content: space-between;
   width: 100%;
-  padding: 4em;
+  padding: 4em var(--_layout---padding-global--page-padding);
   display: flex;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 991px) {
-  .container.is-mwg_effect025 { padding: 2em 0 0; }
+  .container.is-mwg_effect025 {
+    padding: 2em var(--_layout---padding-global--page-padding) 0;
+  }
 }
 
-/* Individual card */
+/* Individual card — width as % of container so it scales at all zoom levels */
 .results-card {
   aspect-ratio: 4.8 / 6.2;
   background-color: var(--_theme---background);
   color: var(--_theme---body-text);
   will-change: transform;
   border-radius: 3em;
-  width: 28em;
+  width: 26%;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
@@ -424,13 +427,13 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 @media screen and (max-width: 991px) { 
   .results-card { 
     border-radius: 2em; 
-    width: 20em;
+    width: 28%;
   }
 }
 @media screen and (max-width: 767px) { 
   .results-card { 
     border-radius: 1.5em;
-    width: 16em;
+    width: 30%;
   }
 }
 @media screen and (max-width: 478px) { 
@@ -441,15 +444,15 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   }
 }
 
-/* Fan/overlap — exact from original Webflow inline CSS script */
+/* Fan/overlap — % of card width so it stays proportional at all zoom/viewport sizes */
 @media screen and (min-width: 992px) {
-  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -10vw; }
+  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -9%; }
 }
 @media screen and (min-width: 479px) and (max-width: 991px) {
-  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -5vw; }
+  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -5%; }
 }
 @media screen and (max-width: 478px) {
-  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -2.5vw; z-index: -1; }
+  .mwg_effect025 .results-card:not(:first-child) { margin: 0 0 0 -3%; z-index: -1; }
 }
 
 /* Card rotations — exact from original */
