@@ -79,6 +79,7 @@ export function Services() {
               start: 'top top',
               end: `+=${window.innerHeight}`,
               scrub: true,
+              anticipatePin: 1,
             },
           });
 

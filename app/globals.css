@@ -68,7 +68,7 @@
   --_theme---body-text:  var(--_colors---swatch--black);
   --_theme---label-bg:   var(--_colors---swatch--taupe);
   --_theme---accent-2:   var(--_colors---swatch--taupe);
-  --_theme---card-outline: var(--_colors---brand-colors--red);
+  --_theme---card-outline: var(--_colors---swatch--white);
   --_theme---button-icon-bg: var(--_colors---swatch--white);
   --_theme---button-icon:    var(--_colors---swatch--black);
   --_theme---button-outline: var(--_colors---swatch--black);
@@ -174,6 +174,7 @@
    ───────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--_theme---background);
@@ -339,6 +340,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   --_theme---body-text:  var(--_colors---swatch--black);
   --_theme---label-bg:   var(--_colors---swatch--taupe);
   --_theme---accent-2:   var(--_colors---swatch--taupe);
+  --_theme---card-outline: var(--_colors---brand-colors--red);
   background-color: var(--_theme---background);
   color: var(--_theme---body-text);
 }
@@ -627,7 +629,6 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 .button-default {
   z-index: 1;
   letter-spacing: -.02em;
-  user-select: none;
   place-content: center;
   align-items: center;
   font-size: 1.25em;
@@ -894,17 +895,14 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 
 .expertises-item { width: 100%; }
 
-/* Slide = 100vh - 4em, top padding = 4em — exact from original */
+/* Slide = 100vh, top padding handled inside wrap — exact from original */
 .expertise-slide {
-  height: calc(100vh - 4em);
-  padding-top: 4em;
+  height: 100vh;
+  padding-top: 0;
 }
 
 @media screen and (max-width: 991px) {
   .expertise-slide { height: 100svh; }
-}
-@media screen and (max-width: 479px) {
-  .expertise-slide { padding-top: 3em; }
 }
 
 /* perspective: 250vw — enables rotationX 3D tilt, exact from original */
@@ -912,6 +910,12 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   perspective: 250vw;
   width: 100%;
   height: 100%;
+  padding-top: 4em;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 479px) {
+  .expertise-wrap { padding-top: 3em; }
 }
 
 /* ── Card: fills the wrap absolutely ── */
@@ -1097,4 +1101,32 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
 .button-default__icon.is-default {
   background-color: var(--_theme---button-icon-bg);
   color: var(--_theme---button-icon);
+}
+
+/* ── Expertise card button overrides — scoped so other sections are unaffected ── */
+
+/* Cards 2–4 (pink/green/blue): white button bg, black text, black arrow bg, white arrow */
+.expertise-content .button-default__background {
+  background-color: var(--_colors---swatch--white) !important;
+}
+.expertise-content .button-default,
+.expertise-content .button-default__text {
+  color: var(--_colors---swatch--black) !important;
+}
+.expertise-content .button-default__icon.is-default {
+  background-color: var(--_colors---swatch--black) !important;
+  color: var(--_colors---swatch--white) !important;
+}
+
+/* Card 1 (theme-white): red button bg, white text, red video border, white arrow bg, red arrow */
+.expertise-content.theme-white .button-default__background {
+  background-color: var(--_colors---brand-colors--red) !important;
+}
+.expertise-content.theme-white .button-default,
+.expertise-content.theme-white .button-default__text {
+  color: var(--_colors---swatch--white) !important;
+}
+.expertise-content.theme-white .button-default__icon.is-default {
+  background-color: var(--_colors---swatch--white) !important;
+  color: var(--_colors---brand-colors--red) !important;
 }
