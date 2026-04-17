@@ -756,7 +756,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   }
   .button-default:active .button-default__inner { transform: scale(0.95); }
   .button-default:hover .button-default__icon,
-  .button-default:focus-visible .button-default__icon { transform: scale(0.92); }
+  .button-default:focus-visible .button-default__icon { transform: translateX(0.25em); }
 }
 
 .button-default__background.is-button-icon {
@@ -849,7 +849,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   overflow: hidden;
 }
 
-/* icon 1 — hidden below by default */
+/* icon 1 — hidden above by default */
 .button-default__icon-wrap {
   flex: none;
   justify-content: center;
@@ -859,7 +859,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   display: flex;
   will-change: transform;
   transition: transform 0.4s cubic-bezier(0.7, 0, 0.3, 1);
-  transform: translateY(100%);
+  transform: translateY(-100%);
 }
 
 /* icon 2 — visible by default */
@@ -876,7 +876,7 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   }
   .button-default.is-icon:hover .button-default__icon-wrap:last-child,
   .button-default.is-icon:focus-visible .button-default__icon-wrap:last-child {
-    transform: translateY(-100%);
+    transform: translateY(100%);
   }
 }
 
