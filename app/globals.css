@@ -1470,3 +1470,96 @@ h1, h2, h3, h4, h5, h6, p { margin: 0; }
   .sw-collection .sw-item:nth-child(2) .sw-card { transform: rotate(0.5deg); }
   .sw-collection .sw-item:nth-child(3) .sw-card { transform: rotate(-0.5deg); }
 }
+
+/* ─────────────────────────────────────────────────────
+   CLIENTS SECTION — exact from gethyped.nl
+   ───────────────────────────────────────────────────── */
+
+/* overflow:hidden on section prevents marquee from bleeding out */
+.section_clients {
+  display: block;
+  overflow: hidden;
+}
+
+/* Section divider */
+.section-divider {
+  background-color: var(--_theme---body-text);
+  opacity: .2;
+  width: 100%;
+  height: .0625rem;
+}
+
+/* Heading — vw-based to match original at all viewports.
+   At 430px → 5.5vw = 23.65px (too small), so min is 1.5rem.
+   At 1024px → 5.5vw = 56px. At 1920px → capped at 4.5rem = 72px. */
+.section_clients .heading-m {
+  font-size: clamp(1.75rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -.04em;
+}
+
+/* Heading bottom spacing */
+.padding-72px { padding-bottom: clamp(1.5rem, 4vw, 4.5rem); }
+
+/* Marquee outer — must clip so track doesn't overflow page */
+.mwg_effect008 { width: 100%; overflow: hidden; }
+
+/* Marquee track */
+.container.is-clients-marquee {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: max-content;
+  white-space: nowrap;
+  gap: 1vw;
+  padding: 0 1vw 0 0;
+  user-select: none;
+  cursor: grab;
+  will-change: transform;
+}
+.container.is-clients-marquee:active { cursor: grabbing; }
+
+/* Card outer — sized so ~4-5 cards are visible on desktop,
+   ~3 on tablet, ~2.5 on mobile (matching original) */
+.card {
+  flex-shrink: 0;
+  width: 20vw;
+  height: 20vw;
+}
+/* tablet: ~3.5 cards visible */
+@media screen and (max-width: 991px) {
+  .card { width: 26vw; height: 26vw; }
+}
+/* large mobile: ~3 cards visible */
+@media screen and (max-width: 767px) {
+  .card { width: 32vw; height: 32vw; }
+}
+/* small mobile (430px): ~3 cards visible, matching original */
+@media screen and (max-width: 479px) {
+  .card { width: 30vw; height: 30vw; }
+}
+
+/* Inner card — exact from hyped.css */
+.client-card {
+  background-color: var(--_colors---swatch--creme);
+  border: 1px solid rgba(22, 22, 22, 0.35);
+  border-radius: 1em;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Logo */
+.client-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
