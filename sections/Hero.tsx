@@ -100,7 +100,7 @@ export function Hero() {
       </div>
 
       {/* Cards row — full viewport width, outside page padding */}
-      <div className="mwg_effect025">
+      <div className="mwg_effect025 px:2 lg:px-4">
         <div className="container is-mwg_effect025" ref={containerRef}>
 
           {/* Card 1 — Blue stat */}
