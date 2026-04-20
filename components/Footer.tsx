@@ -77,7 +77,7 @@ export function Footer() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const spawn = useCallback((x: number, y: number, dx: number, dy: number) => {
+  const spawn = useCallback((x: number, y: number) => {
     const root = rootRef.current;
     if (!root) return;
     const logo = LOGOS[idxRef.current % LOGOS.length];
@@ -88,46 +88,43 @@ export function Footer() {
     img.draggable = false;
     img.className = 'flying-logo';
 
-    // Use fixed positioning with viewport coordinates
-    const flyX = (Math.random() - 0.5) * 100;
-    const flyY = -60 - Math.random() * 80; // Float upward from spawn point
-    const logoSize = 180; // Match original size
+    const logoSize = 200;
+    const tilt = (Math.random() - 0.5) * 20;
 
-    // Position exactly at mouse point
+    // Center on cursor — no movement, pure scale + opacity
     img.style.position = 'fixed';
     img.style.left = (x - logoSize / 2) + 'px';
     img.style.top = (y - logoSize / 2) + 'px';
     img.style.width = logoSize + 'px';
     img.style.height = 'auto';
     img.style.opacity = '0';
-    img.style.transform = `rotate(${(Math.random() - 0.5) * 25}deg) scale(0.6)`;
-    img.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    img.style.zIndex = '5'; // Lower than wave so logos go under it
+    img.style.transform = `rotate(${tilt}deg) scale(0)`;
+    img.style.transformOrigin = 'center center';
+    img.style.transition = 'none';
+    img.style.zIndex = '5';
     img.style.pointerEvents = 'none';
 
     document.body.appendChild(img);
 
-    // Fade in while floating upward
+    // Spring scale-up + fade in
     requestAnimationFrame(() => {
-      img.style.opacity = '1';
-      img.style.left = (x - logoSize / 2 + flyX) + 'px';
-      img.style.top = (y - logoSize / 2 + flyY) + 'px';
-      img.style.transform = `rotate(${(Math.random() - 0.5) * 15}deg) scale(1)`;
+      requestAnimationFrame(() => {
+        img.style.transition = 'opacity 0.2s ease-out, transform 0.45s cubic-bezier(0.34, 1.5, 0.64, 1)';
+        img.style.opacity = '1';
+        img.style.transform = `rotate(${tilt}deg) scale(1)`;
+      });
     });
 
-    // Stay visible longer, then fade out
+    // Scale back down + fade out — no position change
     setTimeout(() => {
+      img.style.transition = 'opacity 0.3s ease-in, transform 0.3s ease-in';
       img.style.opacity = '0';
-      setTimeout(() => img.remove(), 500);
-    }, 1500);
+      img.style.transform = `rotate(${tilt}deg) scale(0)`;
+      setTimeout(() => img.remove(), 350);
+    }, 800);
   }, []);
 
-  // Add this to ensure body has relative positioning for fixed elements context
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.body.style.position = 'relative';
-    }
-  }, []);
+  // Removed: body position relative was causing extra scroll space
 
   useEffect(() => {
     const root = rootRef.current;
@@ -139,10 +136,10 @@ export function Footer() {
       const dy = e.clientY - oldYRef.current;
       const dist = Math.abs(dx) + Math.abs(dy);
 
-      // Much larger spacing for fewer, more scattered logos like original
-      if (dist > 280 && (dx !== 0 || dy !== 0)) {
+      // Spawn roughly every 500px of movement — minimal frequency
+      if (dist > 500 && (dx !== 0 || dy !== 0)) {
         // Spawn exactly at mouse position
-        spawn(e.clientX, e.clientY, dx, dy);
+        spawn(e.clientX, e.clientY);
         oldXRef.current = e.clientX;
         oldYRef.current = e.clientY;
       }
