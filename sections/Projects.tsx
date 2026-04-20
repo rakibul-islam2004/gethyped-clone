@@ -141,7 +141,7 @@ export function Projects() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section || window.innerWidth <= 478) return;
+    if (!section || window.innerWidth <= 767) return;
 
     const items = gsap.utils.toArray<HTMLElement>('.sw-item', section);
     const targetYs = ['0em', '-12em', '-24em'];

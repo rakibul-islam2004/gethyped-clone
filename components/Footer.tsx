@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useRef, useEffect, useCallback } from 'react';
 import { FaLinkedinIn, FaInstagram, FaYoutube } from 'react-icons/fa';
@@ -91,7 +91,7 @@ export function Footer() {
     const logoSize = 200;
     const tilt = (Math.random() - 0.5) * 20;
 
-    // Center on cursor — no movement, pure scale + opacity
+    // Center on cursor ΓÇö no movement, pure scale + opacity
     img.style.position = 'fixed';
     img.style.left = (x - logoSize / 2) + 'px';
     img.style.top = (y - logoSize / 2) + 'px';
@@ -115,7 +115,7 @@ export function Footer() {
       });
     });
 
-    // Scale back down + fade out — no position change
+    // Scale back down + fade out ΓÇö no position change
     setTimeout(() => {
       img.style.transition = 'opacity 0.3s ease-in, transform 0.3s ease-in';
       img.style.opacity = '0';
@@ -136,7 +136,7 @@ export function Footer() {
       const dy = e.clientY - oldYRef.current;
       const dist = Math.abs(dx) + Math.abs(dy);
 
-      // Spawn roughly every 280px of movement — matching original frequency
+      // Spawn roughly every 280px of movement ΓÇö matching original frequency
       if (dist > 320 && (dx !== 0 || dy !== 0)) {
         // Spawn exactly at mouse position
         spawn(e.clientX, e.clientY);
@@ -201,9 +201,34 @@ export function Footer() {
                 {/* Mobile logo */}
                 <div className="footer-mobile-logo">
                   <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 941 382" fill="none" className="footer-mobile-logo_svg">
-                    <path d="M940.689 83.634V312.664C940.689 350.749 909.95 381.62 872.028 381.62H34.46C15.808 381.62.69 366.436.69 347.704V170.798C.69 153.889 12.873 139.442 29.498 136.669L843.838 1.144C894.561-7.291 940.689 31.995 940.689 83.615" fill="#EAE4D8" />
-                    <path d="M855.114 363.741H253.594V117.356L844.9 24.297C884.869 18.014 921.014 49.04 921.014 89.684V297.558C921.014 334.111 891.511 363.741 855.114 363.741Z" fill="black" />
+                    <path d="M940.689 83.6343V312.664C940.689 350.749 909.95 381.62 872.028 381.62H34.4602C15.8081 381.62 0.689453 366.436 0.689453 347.704V170.798C0.689453 153.889 12.8733 139.442 29.4979 136.669L843.838 1.14395C894.561 -7.29124 940.689 31.9954 940.689 83.6149" fill="#EAE4D8" />
+                    <path d="M855.114 363.741H253.594V117.356L844.9 24.2971C884.869 18.0143 921.014 49.0403 921.014 89.6843V297.558C921.014 334.111 891.511 363.741 855.114 363.741Z" fill="black" />
+                    {/* Black text for "GET" on beige background (left side) */}
+                    <path d="M98.1596 363.741H157.881V320.169L123.435 321.177V271.943L155.796 269.868V226.625L123.435 229.65V180.397L157.881 175.995V132.423L98.1596 141.808V363.741Z" fill="black"/>
+                    <path d="M167.033 130.968V174.831L190.822 171.787V363.741H219.553V168.122L245.079 164.864V118.694L167.033 130.968Z" fill="black"/>
+                    <path d="M65.0839 235.099V187.552L39.1138 190.868V324.9L65.0839 324.144V284.838L49.135 285.749V247.665L89.181 244.252V363.722H65.1032V351.253L60.9132 355.383C55.4875 360.735 48.1889 363.722 40.6006 363.722H36.4492C25.5206 363.722 16.6772 354.821 16.6772 343.865V177.275C16.6772 164.244 26.1384 153.133 38.9593 151.116L66.3582 146.811C78.3488 144.93 89.2003 154.238 89.2003 166.416V232.831L65.1224 235.08L65.0839 235.099Z" fill="black"/>
+                    {/* White text for "HYPED" on black background (right side) */}
+                    <path d="M323.066 121.835V214.7L306.229 216.232V124.337L271.802 129.417V348.81L306.229 348.48V256.585L323.066 255.46V348.325L359.791 347.976V116.406L323.066 121.835Z" fill="white"/>
+                    <path d="M429.128 106.148L419.339 194.223L418.875 201.766L417.948 201.863L417.485 194.416L407.85 109.289L368.132 115.164L398.543 264.69V347.607L438.763 347.239V262.363L471.8 99.826L429.128 106.148Z" fill="white"/>
+                    <path d="M723.739 113.671V62.556L613.1 78.9223V345.591L723.739 344.543V293.448L666.488 295.425V232.714L720.417 229.146V178.477L666.488 183.402V120.71L723.739 113.671Z" fill="white"/>
+                    <path d="M547.354 221.933L526.463 223.523V133.121L547.354 130.503V221.933ZM479.948 98.6237V346.851L526.115 346.405V265.951L547.528 264.807C575.526 263.314 597.46 240.083 597.46 211.927V142.564C597.46 110.258 568.884 85.4764 537.044 90.1885L479.948 98.6431V98.6237Z" fill="white"/>
+                    <path d="M826.711 294.262L799.1 295.154V98.934L826.711 95.4629V294.262ZM738.027 60.4424V344.408L841.058 343.438C869.982 343.167 893.287 319.548 893.287 290.5V98.7982C893.287 66.4924 864.711 41.7105 832.871 46.4225L738.008 60.4618L738.027 60.4424Z" fill="white"/>
                   </svg>
+                </div>
+
+                {/* Mobile CTA Button - only shows on mobile */}
+                <div className="footer-mobile-cta">
+                  <a href="#" className="button-default is-footer-cta">
+                    <div className="button-default__inner">
+                      <span className="button-default__background is-footer-cta" />
+                      <span className="button-default__text">Get Hyped! Neem contact op</span>
+                      <div className="button-default__icon is-footer-cta">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 24" fill="none">
+                          <path d="M17.491 11.036c-.3-.392-.666-.732-1.006-1.072-.876-.785-1.87-1.347-2.707-2.171-1.948-1.91-2.38-5.061-1.137-7.48-1.242.3-2.328.981-3.256 1.726C6.995 4.759 5.661 9.558 7.257 13.678c.052.13.104.261.104.431 0 .288-.196.549-.457.654-.301.131-.615.052-.863-.157a1.37 1.37 0 01-.243-.318C4.38 12.514 4.145 9.833 5.138 7.688 2.955 9.467 1.764 12.475 1.934 15.312c.079.654.157 1.308.38 1.962.183.785.536 1.569.928 2.263 1.413 2.262 3.858 3.884 6.487 4.21 2.798.354 5.793-.156 7.937-2.091 2.394-2.171 3.231-5.65 2.001-8.631l-.17-.34c-.274-.601-1.006-1.648-1.006-1.648zm-4.133 8.239c-.366.314-.967.654-1.438.785-1.464.523-2.929-.21-3.792-1.073 1.556-.366 2.485-1.517 2.759-2.681.223-1.046-.196-1.91-.366-2.916-.157-.968-.131-1.792.222-2.694.248.497.51.994.823 1.386 1.007 1.308 2.59 1.883 2.93 3.662.052.183.078.366.078.562.039 1.072-.431 2.249-1.216 2.969z" fill="currentColor" />
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
                 </div>
 
                 {/* Wave SVG + GETHYPED logo */}
@@ -286,7 +311,7 @@ export function Footer() {
                         </div>
                       </div>
                       <div className="footer-copyright">
-                        <span className="footer-link">&#169; {new Date().getFullYear()} Get Hyped</span>
+                        <span className="footer-link">&#169; 2025 Get Hyped</span>
                         <a href="https://dylanbrouwer.design/" target="_blank" rel="noopener noreferrer" className="footer-link">
                           &#169; Design by Dylan
                         </a>

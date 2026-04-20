@@ -40,6 +40,11 @@
 /* ─────────────────────────────────────────────────────
    DESIGN TOKENS — matching original variable names
    ───────────────────────────────────────────────────── */
+/* Mobile CTA - hidden by default on desktop */
+.footer-mobile-cta {
+  display: none !important;
+}
+
 :root {
   /* page padding */
   --_layout---padding-global--page-padding: 2.5em;
@@ -1706,7 +1711,7 @@ p {
   }
 }
 
-/* Card list: horizontal row */
+/* Card list: horizontal row on desktop */
 .sw-list {
   display: flex;
   flex-direction: row;
@@ -1722,12 +1727,6 @@ p {
     padding-left: 0;
     padding-right: 0;
     gap: 0.75em;
-  }
-}
-
-@media screen and (max-width: 479px) {
-  .sw-list {
-    gap: 0.5em;
   }
 }
 
@@ -1942,6 +1941,7 @@ p {
 }
 
 /* Per-card color theming */
+/* Per-card color theming */
 .sw-collection .sw-item:nth-child(1) .sw-card,
 .sw-collection .sw-item:nth-child(1) .sw-card_content {
   background-color: var(--_colors---brand-colors--red);
@@ -1982,104 +1982,9 @@ p {
 }
 
 
-/* Mobile-specific adjustments */
-@media screen and (max-width: 767px) {
-  .sw-card {
-    border-radius: var(--_layout---radius--border-radius-medium);
-    padding: 6px;
-  }
+/* Mobile-specific adjustments — overridden by block at end of file for 479px */
 
-  .sw-card_video {
-    border-radius: 1.5em;
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
-    top: 6px;
-    left: 6px;
-  }
-
-  .sw-card_content {
-    gap: 0.5em;
-    padding-bottom: 0.75em;
-    padding-left: 0.75em;
-    padding-right: 0.75em;
-  }
-
-  .sw-card_wrap {
-    bottom: 1.25em;
-    left: 1.25em;
-    right: 1.25em;
-  }
-
-  .sw-card_shape {
-    transform: translateY(-3.5em);
-  }
-
-  .work-card_icon.is-sw {
-    width: 2.5em;
-    height: 2.5em;
-    top: 0.25em;
-    right: 0.25em;
-  }
-
-  .work-card_icon-svg {
-    height: 0.875em;
-  }
-
-  .sw-card .label {
-    height: 2.5em;
-    font-size: 10px;
-  }
-}
-
-/* Small mobile adjustments */
-@media screen and (max-width: 479px) {
-  .sw-card {
-    padding: 4px;
-  }
-
-  .sw-card_video {
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    top: 4px;
-    left: 4px;
-  }
-
-  .sw-card_wrap {
-    bottom: 1em;
-    left: 1em;
-    right: 1em;
-  }
-
-  .sw-card_shape {
-    transform: translateY(-2.75em);
-  }
-
-  .work-card_icon.is-sw {
-    width: 2.25em;
-    height: 2.25em;
-  }
-
-  .work-card_icon-svg {
-    height: 1em;
-  }
-
-  .sw-card .label {
-    font-size: 12px;
-  }
-
-  /* Subtle card rotations on mobile */
-  .sw-collection .sw-item:nth-child(1) .sw-card {
-    transform: rotate(-1deg);
-  }
-
-  .sw-collection .sw-item:nth-child(2) .sw-card {
-    transform: rotate(0.5deg);
-  }
-
-  .sw-collection .sw-item:nth-child(3) .sw-card {
-    transform: rotate(-0.5deg);
-  }
-}
+/* Small mobile — overridden by the block at end of file */
 
 /* ─────────────────────────────────────────────────────
    CLIENTS SECTION — exact from gethyped.nl
@@ -2099,9 +2004,7 @@ p {
   height: .0625rem;
 }
 
-/* Heading — vw-based to match original at all viewports.
-   At 430px → 5.5vw = 23.65px (too small), so min is 1.5rem.
-   At 1024px → 5.5vw = 56px. At 1920px → capped at 4.5rem = 72px. */
+/* Heading — responsive size matching original at all viewports */
 .section_clients .heading-m {
   font-size: clamp(1.75rem, 5.5vw, 4.5rem);
   line-height: 1.05;
@@ -2569,25 +2472,48 @@ p {
   }
 }
 
-/* Tablet */
+/* Tablet (991px) */
 @media screen and (max-width: 991px) {
   .cs-footer {
+    height: auto;
     padding-top: 8em;
+    padding-bottom: 32em;
+  }
+
+  .cs-footer-bottom {
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .cs-footer-info-wrapper {
+    width: calc(100% - 4em);
+    padding: 1em 0;
     position: relative;
-    padding: 2em var(--_layout---padding-global--page-padding) 2.5em;
     justify-content: flex-start;
     align-items: flex-start;
   }
 
   .footer-info {
-    flex-flow: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 2em;
+    gap: 5em;
     width: 100%;
+  }
+
+  .footer-bg {
+    position: relative;
+  }
+
+  .footer-logo {
+    padding-top: 0.4em;
+    padding-left: 0.4em;
+    top: 5.8em;
+    bottom: auto;
   }
 
   .footer-logo_svg {
@@ -2595,57 +2521,251 @@ p {
   }
 
   .footer-sticker-wrapper {
-    top: -4em;
+    top: -3em;
     right: 2em;
     width: 100px;
     height: 100px;
   }
 }
 
-/* Mobile */
+
+/* ─────────────────────────────────────────────────────
+   RESPONSIVE — PROJECTS SECTION
+   Exact match to original gethyped.nl mobile layout
+   ───────────────────────────────────────────────────── */
+
+/* 479px — original: column layout, 80vw cards with 5vw left margin, rotate(-2deg) */
 @media screen and (max-width: 479px) {
-  .cs-footer {
-    height: auto;
-    min-height: 100svh;
+  .sw-list {
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 1.25em;
   }
 
-  .cs-footer-cta {
-    gap: 2em;
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-
-  .cs-footer-cta .heading-xxl {
-    font-size: 3.5em;
-  }
-
-  .button-group.is-footer {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-mobile-logo {
+  .sw-item {
     width: 100%;
-    max-width: 100%;
-    margin-bottom: -2em;
+    transform: none !important;
+  }
+
+  .sw-card {
+    width: 80vw;
+    max-width: none;
+    margin-left: 5vw;
+    padding: 6px;
+    border-radius: var(--_layout---radius--border-radius-medium);
+    transform: rotate(-2deg);
+  }
+
+  .sw-collection .sw-item:nth-child(1) .sw-card,
+  .sw-collection .sw-item:nth-child(2) .sw-card,
+  .sw-collection .sw-item:nth-child(3) .sw-card {
+    transform: rotate(-2deg);
+  }
+
+  .sw-card_video {
+    width: calc(100% - 12px);
+    height: calc(100% - 12px);
+    top: 6px;
+    left: 6px;
+  }
+
+  .sw-card_wrap {
+    bottom: 1.5em;
+    left: 1.5em;
+    right: 1.5em;
+  }
+
+  .sw-card_shape {
+    transform: translateY(-5em);
+  }
+
+  .work-card_icon.is-sw {
+    width: 3em;
+    height: 3em;
+    top: 0.5em;
+    right: 0.5em;
+  }
+
+  .work-card_icon-svg {
+    height: 1em;
+  }
+
+  .sw-card_mobile-video {
     display: block;
   }
 
-  .footer-mobile-logo_svg {
-    width: 100%;
-  }
-
-  .footer-sticker-wrapper {
+  .video-card_video.hide-mobile {
     display: none;
   }
+}
 
-  .footer-info {
-    flex-flow: column;
-    gap: 1.5em;
+/* ─────────────────────────────────────────────────────
+   RESPONSIVE — FOOTER + CLIENTS (479px)
+   Pure CSS approach — no JSX changes needed
+   ───────────────────────────────────────────────────── */
+@media screen and (max-width: 479px) {
+
+  /* Remove the 100vh height and padding from footer container */
+  .cs-footer {
+    height: auto !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
+  /* Hide desktop CTA ("Let's Get Hyped!") */
+  .cs-footer-cta {
+    display: none !important;
+  }
+
+  /* Mobile CTA button - show only on mobile */
+  .footer-mobile-cta {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 1em var(--_layout---padding-global--page-padding) !important;
+    margin-top: -0.5em !important;
+  }
+
+  .footer-mobile-cta .button-default {
+    font-size: 1.1em !important;
+  }
+
+  .footer-mobile-cta .button-default__inner {
+    height: 2.5em !important;
+    padding: 0 0.25rem 0 0.875em !important;
+  }
+
+  .footer-mobile-cta .button-default__icon {
+    width: 2em !important;
+    height: 2em !important;
+    border-radius: 0.5em !important;
+  }
+
+  /* Make bottom section static flow (not absolute) */
+  .cs-footer-bottom {
+    position: static !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+    z-index: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Show mobile GETHYPED logo */
+  .footer-mobile-logo {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+    overflow: visible !important;
+    line-height: 0 !important;
+  }
+
+  .footer-mobile-logo_svg {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  /* Hide desktop wave SVG */
+  .footer-bg {
+    display: none !important;
+  }
+
+  /* Hide rotating sticker */
+  .footer-sticker-wrapper {
+    display: none !important;
+  }
+
+  /* Info wrapper: static, full width, centered */
+  .cs-footer-info-wrapper {
+    position: static !important;
+    width: 100% !important;
+    padding: 1.5em var(--_layout---padding-global--page-padding) 2.5em !important;
+    justify-content: center !important;
+    align-items: center !important;
+    display: flex !important;
+  }
+
+  /* Footer info: centered column */
+  .footer-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5em !important;
+    width: 100% !important;
+  }
+
+  /* Footer links: centered */
+  .footer_links {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.25em !important;
+    width: 100% !important;
+  }
+
+  /* Nav pills: centered wrap */
+  .footer_sitemap {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.5em !important;
+  }
+
+  /* Follow us: centered */
+  .footer-follow {
+    justify-content: center !important;
+  }
+
+  /* Hide "Follow us" text label */
+  .footer-follow-label {
+    display: none !important;
+  }
+
+  /* Copyright: stacked centered */
   .footer-copyright {
-    flex-flow: column;
-    gap: .4em;
+    flex-direction: column !important;
+    gap: 0.3em !important;
+    align-items: center !important;
+  }
+
+  /* Right column (contact/adres): centered */
+  .footer-info-right {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.75em !important;
+    width: 100% !important;
+  }
+
+  .footer-col {
+    align-items: center !important;
+  }
+
+  /* All footer links: centered */
+  .footer-link {
+    text-align: center !important;
+    font-size: 1em !important;
+    white-space: normal !important;
+  }
+
+  /* Hide Contact/Adres labels */
+  .footer-label {
+    display: none !important;
+  }
+
+  /* ── Clients heading: matches original 2-line wrap ── */
+  .section_clients .heading-m {
+    font-size: 1.75rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.03em !important;
   }
 }
+
+
