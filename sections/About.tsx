@@ -4,9 +4,10 @@ import Link from 'next/link';
 
 export function About() {
   return (
-    <section id="intro-home" className="padding-global section-padding-96px">
-      <div className="container-col-12">
-        <div className="grid-col-12">
+    <section id="intro-home" className="section-padding-96px">
+      <div className="padding-global">
+        <div className="container-col-12">
+          <div className="grid-col-12">
 
           {/* Heading — desktop: cols 2–12, tablet: cols 1–12, mobile: full */}
           <div
@@ -23,16 +24,29 @@ export function About() {
             id="w-node-faa2305a-1600-624b-3553-a5629475cb14-23544b6d"
             className="small-image"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              srcSet="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril-p-500.webp 500w, https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril-p-800.webp 800w, https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril.webp 960w"
-              src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril.webp"
-              sizes="(max-width: 479px) 75vw, 960px"
-              alt=""
-              loading="lazy"
-              className="image"
-            />
+            {/* Mobile: autoplay video */}
+            <div className="show-mobile" style={{ width: '100%', height: '100%' }}>
+              <video
+                muted loop playsInline autoPlay
+                src="https://gethyped.b-cdn.net/New%20Reach/new-reach-loop.mp4"
+                className="video"
+              />
+            </div>
+            {/* Desktop: static image */}
+            <div className="hide-mobile" style={{ width: '100%', height: '100%' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                srcSet="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril-p-500.webp 500w, https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril-p-800.webp 800w, https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril.webp 960w"
+                src="https://cdn.prod.website-files.com/6848603da8e6ac95794b7498/6894757aa6dd3f84f6e463a2_Anniek%20Bril.webp"
+                sizes="(max-width: 479px) 75vw, 960px"
+                alt=""
+                loading="lazy"
+                className="image"
+              />
+            </div>
           </div>
+
+          {/* Mobile spacer after image — removed, causes extra gap */}
 
           {/* Content — desktop: row2 cols 5–9 align-end, tablet: cols 5–11 align-center, mobile: row3 full */}
           <div
@@ -57,9 +71,10 @@ export function About() {
             </div>
           </div>
 
-          {/* Down arrow — desktop: row2 col 11–12 place-self-end, mobile: row1 col 12 */}
+          {/* Down arrow — desktop only, hidden on mobile */}
           <div
             id="w-node-faa2305a-1600-624b-3553-a5629475cb1f-23544b6d"
+            className="hide-mobile"
           >
             <Link href="#expertises" className="button-default is-icon w-inline-block">
               <div className="button-default__inner is-icon">
@@ -80,6 +95,7 @@ export function About() {
             </Link>
           </div>
 
+          </div>
         </div>
       </div>
     </section>

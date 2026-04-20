@@ -136,8 +136,8 @@ export function Footer() {
       const dy = e.clientY - oldYRef.current;
       const dist = Math.abs(dx) + Math.abs(dy);
 
-      // Spawn roughly every 500px of movement — minimal frequency
-      if (dist > 500 && (dx !== 0 || dy !== 0)) {
+      // Spawn roughly every 280px of movement — matching original frequency
+      if (dist > 320 && (dx !== 0 || dy !== 0)) {
         // Spawn exactly at mouse position
         spawn(e.clientX, e.clientY);
         oldXRef.current = e.clientX;
