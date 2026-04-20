@@ -57,6 +57,7 @@ const STICKER_PATHS: { d: string; fill: string }[] = [
 
 export function Footer() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
   const stickerRef = useRef<SVGSVGElement>(null);
   const incrRef = useRef(0);
   const oldXRef = useRef(0);
@@ -85,43 +86,79 @@ export function Footer() {
     img.src = logo.src;
     img.alt = logo.alt;
     img.draggable = false;
-    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-    const top = y - root.getBoundingClientRect().top;
-    img.style.cssText = [
-      'width:15vw', 'position:absolute', 'object-fit:cover', 'z-index:5', 'pointer-events:none',
-      'left:' + x + 'px', 'top:' + top + 'px',
-      'transform:translate(-50%,-50%) rotate(' + angle + 'deg)',
-      'opacity:1', 'transition:opacity 0.6s ease',
-    ].join(';');
-    root.appendChild(img);
+    img.className = 'flying-logo';
+
+    // Use fixed positioning with viewport coordinates
+    const flyX = (Math.random() - 0.5) * 100;
+    const flyY = -60 - Math.random() * 80; // Float upward from spawn point
+    const logoSize = 180; // Match original size
+
+    // Position exactly at mouse point
+    img.style.position = 'fixed';
+    img.style.left = (x - logoSize / 2) + 'px';
+    img.style.top = (y - logoSize / 2) + 'px';
+    img.style.width = logoSize + 'px';
+    img.style.height = 'auto';
+    img.style.opacity = '0';
+    img.style.transform = `rotate(${(Math.random() - 0.5) * 25}deg) scale(0.6)`;
+    img.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    img.style.zIndex = '5'; // Lower than wave so logos go under it
+    img.style.pointerEvents = 'none';
+
+    document.body.appendChild(img);
+
+    // Fade in while floating upward
+    requestAnimationFrame(() => {
+      img.style.opacity = '1';
+      img.style.left = (x - logoSize / 2 + flyX) + 'px';
+      img.style.top = (y - logoSize / 2 + flyY) + 'px';
+      img.style.transform = `rotate(${(Math.random() - 0.5) * 15}deg) scale(1)`;
+    });
+
+    // Stay visible longer, then fade out
     setTimeout(() => {
       img.style.opacity = '0';
-      setTimeout(() => img.remove(), 600);
-    }, 400);
+      setTimeout(() => img.remove(), 500);
+    }, 1500);
+  }, []);
+
+  // Add this to ensure body has relative positioning for fixed elements context
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.position = 'relative';
+    }
   }, []);
 
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    const dist = window.innerWidth / 3;
-    const first = (e: MouseEvent) => {
-      oldXRef.current = e.clientX;
-      oldYRef.current = e.clientY;
-    };
-    const move = (e: MouseEvent) => {
-      incrRef.current += Math.abs(e.clientX - oldXRef.current) + Math.abs(e.clientY - oldYRef.current);
-      if (incrRef.current > dist) {
-        incrRef.current = 0;
-        spawn(e.clientX, e.clientY, e.clientX - oldXRef.current, e.clientY - oldYRef.current);
+
+    // Track mouse on the entire footer div
+    const handleMouseMove = (e: MouseEvent) => {
+      const dx = e.clientX - oldXRef.current;
+      const dy = e.clientY - oldYRef.current;
+      const dist = Math.abs(dx) + Math.abs(dy);
+
+      // Much larger spacing for fewer, more scattered logos like original
+      if (dist > 280 && (dx !== 0 || dy !== 0)) {
+        // Spawn exactly at mouse position
+        spawn(e.clientX, e.clientY, dx, dy);
+        oldXRef.current = e.clientX;
+        oldYRef.current = e.clientY;
       }
+    };
+
+    const handleMouseEnter = (e: MouseEvent) => {
       oldXRef.current = e.clientX;
       oldYRef.current = e.clientY;
     };
-    root.addEventListener('mousemove', first, { once: true });
-    root.addEventListener('mousemove', move);
+
+    root.addEventListener('mousemove', handleMouseMove);
+    root.addEventListener('mouseenter', handleMouseEnter);
+
     return () => {
-      root.removeEventListener('mousemove', first);
-      root.removeEventListener('mousemove', move);
+      root.removeEventListener('mousemove', handleMouseMove);
+      root.removeEventListener('mouseenter', handleMouseEnter);
     };
   }, [spawn]);
 
@@ -133,7 +170,7 @@ export function Footer() {
             <div className="cs-footer">
 
               {/* CTA area */}
-              <div className="cs-footer-cta">
+              <div ref={ctaRef} className="cs-footer-cta">
                 <h2 className="heading-xxl">Let&apos;s Get Hyped!</h2>
                 <div className="button-group is-footer">
                   <a href="mailto:info@gethyped.nl" className="button-default is-outline">
