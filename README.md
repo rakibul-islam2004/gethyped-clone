@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GetHyped Clone
 
-## Getting Started
+A clone of [gethyped.nl](https://gethyped.nl) — a social-first short-form content agency website. Built with Next.js, Tailwind CSS v4, Framer Motion, and GSAP.
 
-First, run the development server:
+## 🔗 Live Demo
+
+**[https://gethyped-clone-seven.vercel.app/](https://gethyped-clone-seven.vercel.app/)**
+
+## ✨ Features
+
+- Close clone of the original gethyped.nl design
+- Smooth scrolling powered by [Lenis](https://github.com/darkroomengineering/lenis) + GSAP ScrollTrigger
+- Animated navbar with mobile menu overlay
+- Hero section with interactive GSAP card animations
+- About, Services, Projects, and Clients sections
+- Animated footer with logo spawn effect and rotating sticker
+- Custom 404 not-found page
+- Fully responsive — mobile, tablet, and desktop
+- Deployed on Vercel
+
+## 🛠 Tech Stack
+
+- [Next.js 16](https://nextjs.org)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Framer Motion](https://www.framer.com/motion/)
+- [GSAP](https://gsap.com)
+- [Lenis](https://github.com/darkroomengineering/lenis)
+- [Lucide React](https://lucide.dev)
+- [React Icons](https://react-icons.github.io/react-icons/)
+
+## 🚀 Getting Started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/          → Next.js App Router pages and layout
+components/   → Navbar, Footer, SmoothScroll
+sections/     → Hero, About, Services, Projects, Clients
+public/       → Static assets
+```
 
-## Learn More
+## 📄 Original Site
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is a clone built for learning purposes.
+Original design: [gethyped.nl](https://gethyped.nl)

@@ -1344,7 +1344,9 @@ p {
   .small-image {
     width: 85vw;
     aspect-ratio: 3 / 4;
-    transform: translate(3vw) rotate(3deg);
+    transform: rotate(3deg);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .button-wrap {
