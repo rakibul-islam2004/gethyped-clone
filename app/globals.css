@@ -3119,11 +3119,11 @@ p {
     height: 22vw !important;
   }
 
-  /* ── Footer: sticker smaller and above wave, not overlapping CTA ── */
+  /* ── Footer: sticker smaller and on the wave, not overlapping CTA ── */
   .footer-sticker-wrapper {
     width: 65px !important;
     height: 65px !important;
-    top: -1em !important;
+    top: 0.5em !important;
     right: 1em !important;
   }
 
@@ -3135,7 +3135,7 @@ p {
   /* ── Footer: increase padding-bottom to prevent content being hidden by wave ── */
   .cs-footer {
     padding-top: 4em !important;
-    padding-bottom: 20em !important;
+    padding-bottom: 26em !important;
   }
 }
 

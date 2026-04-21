@@ -62,3 +62,6 @@ AGENTS.md
 
 # kiro/sixth IDE config
 .sixth/
+
+# VS Code
+.vscode/
