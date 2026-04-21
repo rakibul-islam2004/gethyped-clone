@@ -16,7 +16,7 @@
 @media screen and (max-width: 991px) {
   :root {
     --size-container-ideal: 991;
-    --size-container-min: 768px;
+    --size-container-min: 540px;
     --size-container-max: 991px;
   }
 }
@@ -25,6 +25,15 @@
   :root {
     --size-container-ideal: 767;
     --size-container-min: 480px;
+    --size-container-max: 767px;
+  }
+}
+
+/* Surface Duo / small tablet (540–767px): use tablet scaling */
+@media screen and (min-width: 540px) and (max-width: 767px) {
+  :root {
+    --size-container-ideal: 767;
+    --size-container-min: 540px;
     --size-container-max: 767px;
   }
 }
@@ -465,7 +474,7 @@ p {
   display: block;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 539px) {
   .hide-mobile {
     display: none !important;
   }
@@ -2771,6 +2780,364 @@ p {
 }
 
 
+
+/* ─────────────────────────────────────────────────────
+   TABLET RESPONSIVE FIXES (540px – 991px)
+   Targets the gap between mobile and desktop layouts
+   ───────────────────────────────────────────────────── */
+@media screen and (min-width: 540px) and (max-width: 991px) {
+
+  /* ── Hero: scale heading up to match original at tablet ── */
+  .hero-title .heading-xxl {
+    font-size: 5.5em;
+  }
+
+  .hero-title .paragraph-l {
+    font-size: 1.5em;
+  }
+
+  /* ── Hero cards: slightly larger at tablet ── */
+  .results-card {
+    width: 30%;
+  }
+
+  /* ── About section: fix grid so image and content sit side-by-side properly ── */
+  .grid-col-12 {
+    grid-template-columns: repeat(10, 1fr);
+    column-gap: 1.5em;
+    row-gap: 1.5em;
+  }
+
+  #w-node-faa2305a-1600-624b-3553-a5629475cb11-23544b6d {
+    grid-area: 1 / 1 / 2 / 11;
+  }
+
+  #w-node-faa2305a-1600-624b-3553-a5629475cb14-23544b6d {
+    grid-area: 2 / 1 / 3 / 4;
+  }
+
+  #w-node-faa2305a-1600-624b-3553-a5629475cb19-23544b6d {
+    grid-area: 2 / 4 / 3 / 11;
+    align-self: center;
+  }
+
+  /* ── About: image taller at tablet ── */
+  .small-image {
+    aspect-ratio: 3 / 4;
+  }
+
+  /* ── About: content-wrap max-width relaxed ── */
+  .content-wrap {
+    max-width: 100%;
+  }
+
+  /* ── Services: expertise card padding ── */
+  .expertise-content {
+    padding: 2.5em;
+  }
+
+  /* ── Services: video thumbnail smaller at tablet ── */
+  .medium-image {
+    width: 16em;
+  }
+
+  /* ── Projects: keep column layout, full width ── */
+  .sw_wrapper {
+    flex-flow: column;
+    gap: 2em;
+  }
+
+  /* Header: full width */
+  .sw_wrapper > .container-col-10 {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* Cards: full width */
+  .sw_wrapper > .container-col-12 {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow: visible;
+  }
+
+  /* Projects: header max-width ~50% to match original wrapping */
+  .max-width-col-06 {
+    max-width: 55%;
+  }
+
+  /* Card list: row, no side padding, bottom-aligned for stagger */
+  .sw-list {
+    padding-left: 0;
+    padding-right: 0;
+    gap: 1em;
+    align-items: flex-end;
+    overflow: visible;
+  }
+
+  /* Items: equal flex children */
+  .sw-item {
+    flex: 1 1 0;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  /* Cards: fill their flex item, keep portrait aspect ratio */
+  .sw-card {
+    width: 100%;
+    max-width: none;
+    display: block;
+    height: auto;
+  }
+
+  /* CSS stagger — card 1 lowest, card 2 middle, card 3 highest */
+  .sw-collection .sw-item:nth-child(1) {
+    transform: translateY(6em);
+  }
+
+  .sw-collection .sw-item:nth-child(2) {
+    transform: translateY(3em);
+  }
+
+  .sw-collection .sw-item:nth-child(3) {
+    transform: translateY(0em);
+  }
+
+  /* ── Footer ── */
+
+  /* CTA heading: fits on one line at tablet */
+  .cs-footer-cta .heading-xxl {
+    font-size: 4.5em;
+  }
+
+  /* CTA area: tighter vertical spacing */
+  .cs-footer-cta {
+    gap: 1.5em;
+  }
+
+  /*
+   * cs-footer padding-bottom = height of cs-footer-bottom (wave + info).
+   * Wave at ~550px wide: 550 / 4.82 ≈ 114px ≈ 7.8em.
+   * Info section ≈ 16em. Total ≈ 24em + 4em buffer = 28em.
+   */
+  .cs-footer {
+    padding-top: 5em;
+    padding-bottom: 28em;
+  }
+
+  /* cs-footer-bottom stays position:absolute (set by max-width:991px block).
+   * Override only the flex direction so wave + info stack vertically. */
+  .cs-footer-bottom {
+    position: absolute !important;
+    inset: auto 0% 0% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Wave: normal flow inside the flex column */
+  .footer-bg {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  /* GETHYPED logo: inside the wave, bottom-left */
+  .footer-logo {
+    position: absolute !important;
+    left: 1.5em !important;
+    bottom: 0.5em !important;
+    top: auto !important;
+    padding: 0 !important;
+  }
+
+  .footer-logo_svg {
+    height: 5em !important;
+  }
+
+  /* Sticker: above the wave, right side */
+  .footer-sticker-wrapper {
+    position: absolute !important;
+    top: -3em !important;
+    right: 2em !important;
+    width: 100px !important;
+    height: 100px !important;
+    z-index: 30 !important;
+  }
+
+  /* Info wrapper: normal flow below the wave, left-aligned */
+  .cs-footer-info-wrapper {
+    position: relative !important;
+    bottom: auto !important;
+    right: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    padding: 1.5em 2em 2em !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    display: flex !important;
+    background-color: var(--_colors---swatch--taupe);
+    pointer-events: auto;
+  }
+
+  /* Info: 2-column grid matching original tablet layout */
+  .footer-info {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    align-items: flex-start !important;
+    gap: 2em !important;
+    width: 100% !important;
+    flex-direction: unset !important;
+  }
+
+  /* Nav pills white background */
+  .button-color-swoosh.is-footer .button-color-swoosh_bg {
+    background-color: var(--_colors---swatch--white);
+  }
+}
+
+/* ─────────────────────────────────────────────────────
+   SMALL TABLET / SURFACE DUO (540px – 767px)
+   Inherits tablet layout, scaled down for narrower width.
+   Does NOT affect desktop (≥992px) or mobile (≤539px).
+   ───────────────────────────────────────────────────── */
+@media screen and (min-width: 540px) and (max-width: 767px) {
+
+  /* ── Hero: smaller heading + paragraph ── */
+  .hero-title .heading-xxl {
+    font-size: 3.8em;
+  }
+
+  .hero-title .paragraph-l {
+    font-size: 1.15em;
+  }
+
+  /* ── Hero: 3 cards — tighter sizing for 540px ── */
+  .results-card {
+    width: 30%;
+    border-radius: 1.5em;
+  }
+
+  .results-card_content {
+    padding: 0.85em;
+  }
+
+  .results-card_title {
+    font-size: 3em;
+  }
+
+  .results-card_subtitle {
+    font-size: 0.8em;
+  }
+
+  .results-card_paragraph {
+    font-size: 0.75em;
+  }
+
+  /* ── About: heading much smaller — was too large ── */
+  #intro-home .heading-m {
+    font-size: 2em;
+  }
+
+  #intro-home .paragraph-l {
+    font-size: 1.1em;
+  }
+
+  /* ── About: grid tighter ── */
+  .grid-col-12 {
+    column-gap: 1em;
+    row-gap: 1em;
+  }
+
+  /* ── Services: expertise card title smaller ── */
+  .expertise-content_heading {
+    font-size: 4em !important;
+  }
+
+  /* ── Services: smaller padding ── */
+  .expertise-content {
+    padding: 1.75em !important;
+  }
+
+  .medium-image {
+    width: 10em !important;
+  }
+
+  .expertise-content_img {
+    bottom: 1.75em !important;
+    right: 1.75em !important;
+  }
+
+  /* ── Projects: no stagger at this width — cards too narrow ── */
+  .sw-collection .sw-item:nth-child(1) {
+    transform: none !important;
+  }
+
+  .sw-collection .sw-item:nth-child(2) {
+    transform: none !important;
+  }
+
+  .sw-collection .sw-item:nth-child(3) {
+    transform: none !important;
+  }
+
+  /* ── Projects: ensure list aligns normally ── */
+  .sw-list {
+    align-items: stretch !important;
+    gap: 0.75em !important;
+  }
+
+  /* ── Projects: smaller card text ── */
+  .sw-card_content .heading-xs {
+    font-size: 1em !important;
+  }
+
+  .sw-card_wrap {
+    bottom: 0.75em !important;
+    left: 0.75em !important;
+    right: 0.75em !important;
+  }
+
+  /* ── Projects: header text smaller ── */
+  .section_selected-work .heading-xl {
+    font-size: 2.8em !important;
+  }
+
+  .section_selected-work .paragraph-l {
+    font-size: 1.1em !important;
+  }
+
+  /* ── Clients: smaller square cards ── */
+  .card {
+    width: 22vw !important;
+    height: 22vw !important;
+  }
+
+  /* ── Footer: sticker smaller and above wave, not overlapping CTA ── */
+  .footer-sticker-wrapper {
+    width: 65px !important;
+    height: 65px !important;
+    top: -1em !important;
+    right: 1em !important;
+  }
+
+  /* ── Footer: tighter heading ── */
+  .cs-footer-cta .heading-xxl {
+    font-size: 2.8em !important;
+  }
+
+  /* ── Footer: increase padding-bottom to prevent content being hidden by wave ── */
+  .cs-footer {
+    padding-top: 4em !important;
+    padding-bottom: 20em !important;
+  }
+}
 
 /* ─────────────────────────────────────────────────────
    404 NOT FOUND PAGE

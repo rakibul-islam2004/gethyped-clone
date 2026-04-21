@@ -141,7 +141,10 @@ export function Projects() {
 
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section || window.innerWidth <= 767) return;
+    if (!section) return;
+
+    // Skip animation entirely on tablet and mobile — CSS handles layout
+    if (window.innerWidth <= 991) return;
 
     const items = gsap.utils.toArray<HTMLElement>('.sw-item', section);
     const targetYs = ['0em', '-12em', '-24em'];
